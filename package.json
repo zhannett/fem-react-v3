@@ -1,15 +1,15 @@
 {
   "scripts": {
     "api": "node ratingsAPI.js",
-    "format": "prettier --list-different --single-quote --print-width=120 webpack.config.js \"js/**/*.{js,jsx}\"",
-    "lint": "eslint **/*.{js,jsx} --quiet",
-    "watch": "webpack --watch",
     "build": "webpack -p",
     "build:dev": "webpack -d",
     "dev": "NODE_ENV=development nodemon server.js",
+    "format": "prettier --list-different --single-quote --print-width=120 webpack.config.js \"js/**/*.{js,jsx}\"",
+    "lint": "eslint **/*.{js,jsx} --quiet",
     "start": "NODE_ENV=server node server.js",
     "test": "NODE_ENV=test jest",
-    "test:update": "NODE_ENV=test jest -u"
+    "test: update": "NODE_ENV=test jest -u",
+    "watch": "webpack --watch"
   },
   "jest": {
     "snapshotSerializers": [
@@ -24,6 +24,7 @@
     "compression": "1.6.2",
     "cors": "2.8.3",
     "express": "4.15.3",
+    "jslint": "^0.10.3",
     "lodash": "4.17.4",
     "preact": "8.1.0",
     "preact-compat": "3.16.0",
@@ -67,16 +68,16 @@
     "jest-serializer-enzyme": "1.0.0",
     "moxios": "0.4.0",
     "nodemon": "1.11.0",
-    "prettier": "1.3.1",
+    "prettier": "^1.5.2",
     "react-hot-loader": "3.0.0-beta.6",
     "react-test-renderer": "15.5.4",
     "webpack-dev-server": "2.4.5"
   },
-  "name": "complete-intro-to-react",
+  "name": "demo-react",
   "version": "3.0.0",
   "description": "A Complete Intro to React workshop",
   "main": "server.js",
   "repository": "git@github.com:btholt/complete-intro-to-react.git",
-  "author": "Brian Holt <btholt@gmail.com>",
+  "author": "Janet Kulyk <janetkulyk@yahoo.com>",
   "license": "MIT"
 }
