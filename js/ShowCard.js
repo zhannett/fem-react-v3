@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: inline-block;
   width: 30%;
-  height: 100%;
+  height: 270px;
   vertical-align: top;
   border: 2px solid #333;
   border-radius: 4px;
