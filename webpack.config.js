@@ -3,7 +3,7 @@ const path = require('path');
 /*
 const config = {
   context: __dirname,
-  entry: ['./js/ClientApp.jsx'],
+  entry: ['./js/ClientApp.js'],
   devtool: process.env.NODE_ENV === 'development' ? 'cheap-eval-source-map' : false,
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -27,7 +27,10 @@ const config = {
     reasons: true,
     chunks: false
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ],
   module: {
     rules: [
       {
@@ -54,11 +57,15 @@ module.exports = config;
 
 module.exports = {
   context: __dirname,
-  entry: "./js/clientApp.jsx",
+  entry: "./js/clientApp.js",
   devtool: "cheap-eval-source-map",
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
+  },
+  devServer: {
+    publicPath: '/public/',
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.js', ',jsx', '.json']
@@ -69,6 +76,12 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader'
