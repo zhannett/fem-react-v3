@@ -28,11 +28,7 @@ const config = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       react: 'preact-compat',
-      'react-dom': 'preact-compat' // ,
-      // App: path.resolve(__dirname,'../js/App.jsx'),
-      // Landing: path.resolve(__dirname, '../js/Landing.jsx'),
-      // Search: path.resolve(__dirname, '../js/Search.jsx'),
-      // ShowCard: path.resolve(__dirname, '../js/ShowCard.jsx')
+      'react-dom': 'preact-compat'
     }
   },
   stats: {

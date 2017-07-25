@@ -47,4 +47,4 @@ server.use((req, res) => {
 });
 
 console.log(`listening on ${port}`);
-server.listen(port);
+server.listen(process.env.PORT || port);
