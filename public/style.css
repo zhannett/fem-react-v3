@@ -511,7 +511,7 @@ html {
 }
 
 .search > div {
-  //display: flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
@@ -591,21 +591,6 @@ pre {
 
 .search > header + div {
   margin-top: 25px;
-}
-
-header {
-  z-index: 10;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  background-color: #fafafa;
-  padding: 8px 30px;
 }
 
 header > h1 {

@@ -13,8 +13,6 @@ const spin = keyframes`
 
 const Image = styled.img`
   animation: ${spin} 4s infinite linear;
-  background-image: url(/public/img/loading.png);
-  background-repeact: no-repeat;
   max-width: 250px;
 `;
 
