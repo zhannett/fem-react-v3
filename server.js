@@ -15,7 +15,7 @@ const config = require('./webpack.config');
 const App = require('./js/App').default;
 
 const StaticRouter = ReactRouter.StaticRouter;
-const port = 8080;
+const port = process.env.PORT || 8080;
 const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
 
@@ -47,4 +47,4 @@ server.use((req, res) => {
 });
 
 console.log(`listening on ${port}`);
-server.listen(process.env.PORT || port);
+server.listen(port);
