@@ -70,7 +70,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  config.entry = './js/ClientApp.jsx';
+  config.entry = './js/ClientApp';
 }
 
 module.exports = config;

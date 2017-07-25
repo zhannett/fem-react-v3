@@ -74,7 +74,7 @@
     "react-test-renderer": "15.5.4",
     "webpack-dev-server": "2.4.5"
   },
-  "name": "demo-react",
+  "name": "ancient-wave-35707",
   "version": "3.0.0",
   "description": "React Demo project based on 'A Complete Intro to React workshop'",
   "main": "server.js",
