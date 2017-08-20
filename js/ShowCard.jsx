@@ -1,43 +1,101 @@
 // @flow
 
 import React from 'react';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import Shiitake from 'shiitake';
 
-const CardWrapper = styled((Link: any))`
+
+const sizes = {
+  giant: 1200,
+  desktop: 992,
+  tablet: 768,
+  phone: 576
+};
+
+// Iterate through the sizes and create a media template
+export const media = Object.keys(sizes).reduce((acc, label) => {
+  // use em in breakpoints to work properly cross-browser and support users
+  // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
+  acc[label] = (...args) => css`
+    @media (max-width: ${sizes[label] / 16}em) {
+      ${css(...args)}
+    }
+  `;
+  return acc;
+}, {});
+
+// const CardWrapper = styled((Link: any))`
+const CardWrapper = styled.div`
   display: inline-block;
-  width: 32%;
-  height: 250px;
+  height: 0;
   vertical-align: top;
+  background: #fff;
   border: 2px solid #333;
   border-radius: 4px;
-  margin-bottom: 25px;
+  margin: 0 1% 2% 1%;
   padding-right: 8px;
+  padding-bottom: 19.8%;
   overflow: hidden;
   text-align: left;
   text-decoration: none;
   color: black;
+  margin: 12px 2% 5px %;
+  background: papayawhip;
+  ${media.giant`width: 30%; max-height: 170px;`}
+	${media.desktop`width: 45%; max-height: 170px;`}
+	${media.tablet`width: 45%; height: 150px;`}
+	${media.phone`width: 90%; height: 120px;`}
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  overflow: hidden;
+  ${media.giant`max-height: 160px;`}
+  ${media.desktop`max-height: 160px;`}
+  ${media.tablet`min-height: 150px;`}
+  ${media.phone`min-height: 150px;`}
   h3 {
     margin: 12px 0 4px 0;
   }
   h4 {
-    margin: 4px 0 0 0;
+    margin: 0 0 5px 0;
+    color: #666;
+    font-size: 13px;
   }
   p {
+    margin: 0;
+    font-size: 13px;
     padding-bottom: 8px;
+    white-space: wrap;
+    overflow: hidden;
   }
 `;
 
 const Image = styled.img`
-  width: 46%;
+  order: 1;
+  flex-grow: 1;
   float: left;
+  display: inline-block;
   margin-right: 10px;
+  ${media.giant`width: 35%;`}
+  ${media.desktop`width: 35%;`}
+  ${media.tablet`width: 30%;`}
+  ${media.phone`width: 30%;`}
 `;
 
-// class ShowCard extends React.Component {
-// shouldComponentUpdate() {
-// return false;
-// }
+const CardInfo = styled.div`
+  order: 2;
+  flex-grow: 1;
+  display: inline-block;
+  display: block;
+  float: right;
+  ${media.giant`width: 60%;`}
+  ${media.desktop`width: 60%;`}
+  ${media.tablet`width: 65%;`}
+  ${media.phone`width: 65%;`}
+  overflow-y: hidden;
+`;
 
 class ShowCard extends React.Component {
   shouldComponentUpdate() {
@@ -54,19 +112,23 @@ class ShowCard extends React.Component {
 
   render() {
     return (
-      <CardWrapper to={`/details/${this.props.imdbID}`} className="show-card">
-        <Image src={`/public/img/posters/${this.props.poster}`} alt={`${this.props.title} Show Poster`} />
-        <div>
-          <h3>
-            {this.props.title}
-          </h3>
-          <h4>
-            ({this.props.year})
-          </h4>
-          <p>
-            {this.props.description}
-          </p>
-        </div>
+      <CardWrapper>
+        <CardContainer>
+          <Link to={`/details/${this.props.imdbID}`}>
+            <Image src={`/public/img/posters/${this.props.poster}`} alt={`${this.props.title} Show Poster`} />
+            <CardInfo>
+              <h3>
+                {this.props.title}
+              </h3>
+              <h4>
+                ({this.props.year})
+              </h4>
+                <Shiitake lines={3} throttleRate={200} tagName="p">
+                  {this.props.description}
+                </Shiitake>
+            </CardInfo>
+          </Link>
+        </CardContainer>
       </CardWrapper>
     );
   }

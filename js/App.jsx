@@ -20,7 +20,7 @@ const App = () =>
           path="/"
           component={(
             props // {//component={Landing} />}
-          ) => <AsyncRoute props={props} loadingPromise={import('./Landing.jsx')} />}
+          ) => <AsyncRoute props={props} loadingPromise={import('./Landing')} />}
         />
         <Route
           path="/search"
@@ -29,7 +29,7 @@ const App = () =>
           ) =>
             <AsyncRoute
               props={Object.assign({ shows: preload.shows }, props)}
-              loadingPromise={import('./Search.jsx')}
+              loadingPromise={import('./Search')}
             />}
         />
         <Route
@@ -40,7 +40,7 @@ const App = () =>
               // {//<Details show={selectedShow} {...props} />;}
               <AsyncRoute
                 props={Object.assign({ show: selectedShow, match: {} }, props)}
-                loadingPromise={import('./Details.jsx')}
+                loadingPromise={import('./Details')}
               />
             );
           }}
@@ -49,6 +49,8 @@ const App = () =>
       </Switch>
     </Provider>;
   </div>;
+
+export default App;
 
 /*
 const App = () => (<div classNamstore={store}>
@@ -76,5 +78,3 @@ const App = () => (<div classNamstore={store}>
   </Provider>
 );
 */
-
-export default App;

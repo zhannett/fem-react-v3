@@ -1,11 +1,51 @@
 // @flow
 
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { RouterHistory } from 'react-router-dom';
 
 import { setSearchTerm } from './actionCreators';
+
+const LandingWrapper =  styled.div`
+  background-color: rgba(220, 220, 220, .7);
+  padding: 15px 30px;
+  border-radius: 5px;
+  form {
+    width: 100%;
+    min-width: 300px;
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  }
+  h1 {
+    color: #B10DC9;
+    font-family: Skia;
+    font-weight: normal;
+  }
+  a {
+    margin-top: 15px;
+    padding: 10px 40px;
+    background-color: #333;
+    color: #fafafa;
+    border-color: transparent;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 4px;
+    & :hover,
+    & :focus {
+      background-color: #666;
+    }
+    & :active {
+      background-color: #fafafa;
+      color: #333;
+      border-color: #333;
+    }
+  }
+`;
 
 class Landing extends Component {
   props: {
@@ -19,7 +59,7 @@ class Landing extends Component {
   };
   render() {
     return (
-      <div className="landing">
+      <LandingWrapper>
         <h1>svideo</h1>
         <form onSubmit={this.goToSearch}>
           <input
@@ -30,7 +70,7 @@ class Landing extends Component {
           />
         </form>
         <Link to="/search"> or Browse All</Link>
-      </div>
+      </LandingWrapper>
     );
   }
 }

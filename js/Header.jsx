@@ -1,17 +1,18 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { setSearchTerm } from './actionCreators';
 
-/*
- const Header = styled.div`
+
+const HeaderWrapper = styled.div`
  z-index: 10;
  position: fixed;
  display: flex;
- align-items: center;
+ align-items: stretch;
  justify-content: space-between;
  text-align: center;
  top: 0;
@@ -20,8 +21,10 @@ import { setSearchTerm } from './actionCreators';
  overflow: hidden;
  background-color: #fafafa;
  padding: 8px 30px;
- `;
- */
+ input {
+  height: 36px;
+ }
+`;
 
 const Header = (props: { showSearch?: boolean, searchTerm: string, handleSearchTermChange: Function }) => {
   let utilSpace;
@@ -38,12 +41,12 @@ const Header = (props: { showSearch?: boolean, searchTerm: string, handleSearchT
     );
   }
   return (
-    <header>
+    <HeaderWrapper>
       <h1>
         <Link to="/">svideo</Link>
       </h1>
       {utilSpace}
-    </header>
+    </HeaderWrapper>
   );
 };
 
